@@ -1,6 +1,6 @@
 const fs = require("fs");
 const csv = require("csvtojson/v2");
-const { pipeline } = require('stream');
+const { pipeline } = require("stream");
 
 const sourcePath = "./csv/source.csv";
 const destPath = "./csv/out.txt";
@@ -8,15 +8,9 @@ const destPath = "./csv/out.txt";
 fs.writeFileSync(destPath, "");
 
 const csvToJsonOptions = {
-    output: 'json',
-    noheader: false,
-    delimiter: [","],
-    colParser: {
-        Book: "string",
-        Author: "string",
-        Amount: "omit",
-        Price: v => +v,
-    }
+    headers: ["book", "author", "amount", "price"],
+    ignoreColumns: /amount/,
+    checkType: true
 }
 
 const readStream = fs.createReadStream(sourcePath);
