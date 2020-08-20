@@ -1,0 +1,50 @@
+{
+  "name": "task2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "build": "tsc -p",
+    "start": "ts-node src/server.ts",
+    "dev": "ts-node-dev --respawn src/server.ts",
+    "devMon": "nodemon --exec ts-node src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexivanov/NodeJS_Mentoring_2020.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Aleksandr Ivanov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lexivanov/NodeJS_Mentoring_2020/issues"
+  },
+  "homepage": "https://github.com/lexivanov/NodeJS_Mentoring_2020#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "@types/hapi__joi": "^16.0.6",
+    "@types/node": "^13.7.0",
+    "@types/validator": "^12.0.1",
+    "eslint": "^6.8.0",
+    "i": "^0.3.6",
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.10.2",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.0.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-joi-validation": "^4.0.3",
+    "http-errors": "^1.7.3",
+    "pg": "^8.3.2",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "5.21.13",
+    "sequelize-typescript": "^1.1.0",
+    "uuid": "^3.3.3"
+  }
+}
