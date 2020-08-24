@@ -3,7 +3,6 @@ import { Dialect } from "sequelize/types";
 
 import { IUser } from "../types";
 import { User } from "../models";
-import { userDataService } from "./UserDataService";
 
 export const backup: Omit<IUser, "id" | "isDeleted">[] = [
   {
@@ -45,13 +44,7 @@ export const dbConnect = async (env: NodeJS.ProcessEnv) => {
       models: [User]
     }
   )
-    .sync({ force: true })
-    .then(() => {
-      console.log('Connection has been established successfully.');
-      backup.forEach(x => {
-        userDataService.create(x);
-        console.log("created", x);
-      });
-    })
+    .sync()
+    .then(() => console.log('Connection has been established successfully.'))
     .catch(err => console.error('Unable to connect to the database:', err));
 }

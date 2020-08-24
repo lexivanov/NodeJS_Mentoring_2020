@@ -20,11 +20,11 @@ class UserDataService implements IDataService<IUser> {
     return { id: updated[0].id, login: updated[0].login, age: updated[0].age };
   }
 
-  public get(pattern?: string, limit?: number) {
+  public async get(pattern?: string, limit?: number) {
     return User.findAll({ where: pattern && { login: { [Op.like]: `%${pattern}%` } }, limit, order: ["login"], attributes: ["id", "login", "age"] });
   }
 
-  public getById(id: any) {
+  public async getById(id: any) {
     return User.findOne({ where: { id }, attributes: ["id", "login", "age"] });
   }
 
