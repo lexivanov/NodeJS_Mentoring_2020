@@ -61,19 +61,16 @@ export class UserDataService {
     return targetUser;
   }
 
-  public static get(pattern?: string, limit?: number) {
-    let result = users.filter(x => !x.isDeleted).sort((x, y) => x.login > y.login ? 1 : -1);
-    if (pattern) {
-      result = result.filter(x => x.login.includes(pattern));
+  public static get(pattern?: string, limit: number = Infinity) {
+    const result = [];
+    for (let user of users) {
+      if (result.length >= limit) break;
+      if (!user.isDeleted && (!pattern || user.login.includes(pattern))) {
+        result.push(user);
+      }
     }
 
-    if (limit) {
-      result = result.length > limit
-        ? result.slice(0, limit)
-        : result;
-    }
-
-    return result;
+    return result.sort((x, y) => x.login > y.login ? 1 : -1);
   }
 
   public static getById(id: string) {
